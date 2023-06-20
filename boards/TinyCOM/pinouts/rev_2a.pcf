@@ -1,0 +1,54 @@
+################################################
+# Board: TinyCOM Rev. 2A
+# Device: iCE40UP5k-SG48I
+################################################
+
+# Left side of the board
+set_io -nowarn pin_1 36
+set_io -nowarn pin_2 37
+set_io -nowarn pin_3 38
+set_io -nowarn pin_4 42
+set_io -nowarn pin_5 43
+set_io -nowarn pin_6 44
+set_io -nowarn pin_7 45
+set_io -nowarn pin_8 2
+set_io -nowarn pin_9 3
+set_io -nowarn pin_10 4
+set_io -nowarn pin_11 6
+set_io -nowarn pin_12 9
+set_io -nowarn pin_13 10
+set_io -nowarn pin_14 11
+set_io -nowarn pin_15 12
+
+# Right side of the board (GPIO only)
+set_io -nowarn pin_21 19
+set_io -nowarn pin_22 21
+set_io -nowarn pin_23 23
+set_io -nowarn pin_24 25
+set_io -nowarn pin_25 26
+set_io -nowarn pin_26 27
+set_io -nowarn pin_27 28
+set_io -nowarn pin_28 31
+
+# SPI interface
+set_io -nowarn o_sck 15
+set_io -nowarn o_cs_flash  16
+set_io -nowarn io_mosi 14
+set_io -nowarn io_miso 17
+set_io -nowarn io_sd2 18
+set_io -nowarn io_sd3 13
+
+# USB interface
+set_io -nowarn io_usbp   34
+set_io -nowarn io_usbn   35
+set_io -nowarn o_usb_pu     32
+
+# 48 MHz clock
+set_io -nowarn o_clk_48m_en 47
+set_io -nowarn i_clk_48m    20
+set_frequency i_clk_48m     48
+
+# RGB LED
+set_io -nowarn RGB0     39
+set_io -nowarn RGB1     40
+set_io -nowarn RGB2     41
