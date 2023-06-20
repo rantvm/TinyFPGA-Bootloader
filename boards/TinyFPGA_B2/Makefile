@@ -55,11 +55,7 @@ $(OUTDIR)/bootmeta.json:
 	@mkdir -p $(@D)
 	yosys -q -l $*.synthesis.rpt -p 'synth_ice40 -top $(PROJ) -blif $*.blif -json $*.yosys.json' $^
 
-%.asc: %.blif
-	@mkdir -p $(@D)
-	arachne-pnr -d 8k -P $(PKG) -o $@ -p $(filter %.pcf,$^) $(filter %.blif,$^)
-
-%.nextpnr.asc: %.yosys.json
+%.asc: %.yosys.json
 	@mkdir -p $(@D)
 	nextpnr-ice40 --$(DEVICE) --package $(PKG) --json $(filter %.yosys.json,$^) --pcf $(filter %.pcf,$^) --asc $@
 

@@ -22,11 +22,16 @@ PKG = sg48
 
 all: $(PROJ).rpt multiboot.bin
 
-%.blif: %.v ../../common/*.v 
-	yosys -p 'synth_ice40 -top $(PROJ) -blif $@' $^
+%.json: %.v ../../common/*.v 
+	yosys -p 'synth_ice40 -top $(PROJ) -json $@' $^
 
-%.asc: $(PIN_DEF) %.blif
-	arachne-pnr -d 5k -P $(PKG) -o $@ -p $^
+%.asc: $(PIN_DEF) %.json
+	nextpnr-ice40 \
+		--$(DEVICE) \
+		--package $(PKG) \
+		--asc $@ \
+		--pcf $(PIN_DEF) \
+		--json $(basename $@).json \
 
 %.bin: %.asc
 	icepack $< $@
