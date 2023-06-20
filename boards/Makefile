@@ -1,6 +1,6 @@
 TOPTARGETS := all clean
 
-SUBDIRS := $(wildcard */.)
+SUBDIRS := $(patsubst %/Makefile, %, $(wildcard */Makefile))
 
 $(TOPTARGETS): $(SUBDIRS)
 $(SUBDIRS):
